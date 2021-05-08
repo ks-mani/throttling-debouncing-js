@@ -1,13 +1,29 @@
 let btnRef = document.getElementById('btnId');
 
-btnRef.addEventListener('click', () => {
-  console.log('Naive Case!!');
-});
+// -- throttling --
+let throttle = function(func, delay) {
+  let timer = null;
+  return () => {
+    if (timer) return;
 
-// let interval = setInterval(() => {
-//     btnRef.click();
-// }, 50);
+    timer = setTimeout(() => {
+      func();
+      timer = null;
+    }, delay);
+  };
+};
 
-// setTimeout(() => {
-//     clearInterval(interval);
-// }, 10000);
+let toBeExecuted = () => {
+  console.log('Throttled Function');
+};
+
+btnRef.addEventListener('click', throttle(toBeExecuted, 500));
+// --------------
+
+let interval = setInterval(() => {
+  btnRef.click();
+}, 5);
+
+setTimeout(() => {
+  clearInterval(interval);
+}, 10000);
