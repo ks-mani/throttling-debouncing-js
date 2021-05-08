@@ -22,7 +22,7 @@ btnRef.addEventListener('click', throttle(toBeExecuted, 500));
 
 let interval = setInterval(() => {
   btnRef.click();
-}, 5);
+}, 50);
 
 setTimeout(() => {
   clearInterval(interval);
