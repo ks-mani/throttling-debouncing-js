@@ -1,6 +1,13 @@
-// Import stylesheets
-import './style.css';
+let btnRef = document.getElementById('btnId');
 
-// Write Javascript code!
-const appDiv = document.getElementById('app');
-appDiv.innerHTML = `<h1>JS Starter</h1>`;
+btnRef.addEventListener('click', () => {
+  console.log('Naive Case!!');
+});
+
+// let interval = setInterval(() => {
+//     btnRef.click();
+// }, 50);
+
+// setTimeout(() => {
+//     clearInterval(interval);
+// }, 10000);
