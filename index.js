@@ -1,23 +1,24 @@
 let btnRef = document.getElementById('btnId');
 
-// -- throttling --
-let throttle = function(func, delay) {
-  let timer = null;
+// -- debouncing --
+let debounce = function(func, delay) {
+  let timer;
   return () => {
-    if (timer) return;
+    if (timer) {
+      clearTimeout(timer);
+    }
 
     timer = setTimeout(() => {
       func();
-      timer = null;
     }, delay);
   };
 };
 
 let toBeExecuted = () => {
-  console.log('Throttled Function');
+  console.log('Debounce Function');
 };
 
-btnRef.addEventListener('click', throttle(toBeExecuted, 500));
+btnRef.addEventListener('click', debounce(toBeExecuted, 2000));
 // --------------
 
 let interval = setInterval(() => {
